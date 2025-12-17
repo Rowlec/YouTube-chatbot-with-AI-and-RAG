@@ -1,0 +1,52 @@
+{
+  "bot_name": "ACN Chat Bot",
+  "bot_channel_id": "YOUR_YOUTUBE_CHANNEL_ID_HERE",
+  "ai": {
+    "enabled": true,
+    "provider": "ollama",
+    "ollama_model": "gemma2",
+    "ollama_host": "http://localhost:11434",
+    "gemini_api_keys": [
+      "YOUR_GEMINI_API_KEY_1",
+      "YOUR_GEMINI_API_KEY_2",
+      "YOUR_GEMINI_API_KEY_3"
+    ]
+  },
+  "permissions": {
+    "say_command": "mod",
+    "hello_command": "all",
+    "joke_command": "all",
+    "bye_command": "all",
+    "so_command": "mod",
+    "weather_command": "all",
+    "ask_command": "all",
+    "time_command": "all",
+    "discord_command": "all",
+    "acn_command": "all"
+  },
+  "links": {
+    "discord": "https://discord.gg/your-server",
+    "youtube": "youtube.com/@YourChannel"
+  },
+  "acn_info": {
+    "description": "Kênh của ACN - Content đủ thể loại cho ae sục!",
+    "youtube": "youtube.com/@ACN",
+    "subscribe_count": "400k+"
+  },
+  "moderation": {
+    "emoji_spam_limit": 5,
+    "word_spam_limit": 8,
+    "message_spam_limit": 3,
+    "timeout_duration_regular": 600,
+    "timeout_duration_mod": 60
+  },
+  "cooldowns": {
+    "say_command": 30,
+    "joke_command": 10,
+    "ai_ask": 7
+  },
+  "messages": {
+    "startup": "đang online ヾ(•ω•`)o, chào mừng ae đến với livestream!",
+    "shutdown": "đã offline ψ(._. )>, hẹn gặp lại!"
+  }
+}

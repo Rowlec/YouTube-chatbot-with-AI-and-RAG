@@ -1,0 +1,23 @@
+# Python dependencies for YouTube Live Chat Bot
+
+# Core dependencies
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.1
+google-auth-oauthlib>=1.1.0
+pytchat>=0.5.5
+
+# Utility libraries
+colorama>=0.4.6
+emoji>=2.8.0
+
+# AI Integration (Multi-Provider Support)
+google-generativeai>=0.3.0  # Google Gemini (60 req/min)
+cohere>=5.0.0               # Cohere AI (100 req/min)
+huggingface-hub>=0.20.0     # HuggingFace (unlimited)
+
+# Optional features (install if you want these features)
+pyjokes>=0.6.0          # For !joke command
+wikipedia>=1.4.0        # For !ask commands
+requests>=2.31.0        # For !weather command
+gtts>=2.4.0            # For text-to-speech (optional)
+pyttsx3>=2.90          # Alternative TTS engine (optional)
