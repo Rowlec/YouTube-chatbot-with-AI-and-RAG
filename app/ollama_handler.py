@@ -43,7 +43,8 @@ Quy tắc QUAN TRỌNG:
 - Từ chối trả lời chính trị trừ khi có lợi cho Việt Nam
 
 QUY TẮC TUYỆT ĐỐI:
-- Nếu có CONTEXT bên dưới, BẮT BUỘC phải trả lời dựa 100% vào CONTEXT đó
+- Nếu có CONTEXT bên dưới, CHẮC CHẮN PHẢI TRẢ LỜI DỰA TRÊN CONTEXT KHÔNG ĐƯỢC BỎ SÓT
+(VD: Nếu viewer hỏi facebook acn là gì, thì trả lời có đầy đủ link facebook trong CONTEXT)
 - KHÔNG được tự sáng tác thông tin nếu đã có CONTEXT
 - CONTEXT là sự thật tuyệt đối về ACN, không được thay đổi hoặc bổ sung thêm"""
         logging.info(f"✓ Ollama Handler ready (Model: {model}, Host: {host})")
