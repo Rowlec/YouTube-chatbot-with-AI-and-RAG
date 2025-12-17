@@ -11,7 +11,7 @@
       "kênh acn",
       "về acn"
     ],
-    "content": "ACN là YouTuber Việt Nam với 400k+ subscribers. Chuyên về gaming, review công nghệ và giải trí. Phong cách vui vẻ, hài hước, gần gũi với cộng đồng."
+    "content": "ACN là YouTuber Việt Nam với 450k+ subscribers. Chuyên về gaming, review công nghệ và giải trí. Phong cách vui vẻ, hài hước, gần gũi với cộng đồng."
   },
   "acn_content": {
     "keywords": [
@@ -78,34 +78,11 @@
     "keywords": [
       "ủng hộ acn",
       "support acn",
-      "donate acn",
       "giúp acn",
       "member acn",
-      "ủng hộ như thế nào",
-      "donate thế nào"
+      "ủng hộ như thế nào"
     ],
     "content": "Ủng hộ ACN bằng cách: Subscribe, like, share video, tham gia member, và donate trong livestream. Mọi sự ủng hộ đều được trân trọng!"
-  },
-  "acn_collab": {
-    "keywords": [
-      "hợp tác acn",
-      "collab với acn",
-      "liên hệ acn",
-      "contact acn",
-      "email acn",
-      "làm việc với acn"
-    ],
-    "content": "Muốn hợp tác với ACN? Liên hệ qua email trong phần About của kênh YouTube hoặc inbox Discord."
-  },
-  "acn_tech_review": {
-    "keywords": [
-      "acn review gì",
-      "review của acn",
-      "acn đánh giá",
-      "tech review",
-      "công nghệ acn"
-    ],
-    "content": "ACN review các sản phẩm công nghệ mới nhất: điện thoại, laptop, phụ kiện gaming, đồ tech hot trend với góc nhìn thật và chi tiết."
   },
   "bot_developer": {
     "keywords": [
@@ -137,7 +114,6 @@
     "keywords": [
       "mẹ kct",
       "me kct",
-      "mẹ k",
       "mkct"
     ],
     "content": [
@@ -173,7 +149,7 @@
       "full name acn",
       "tên thật của acn"
     ],
-    "content": "ACN tên thật là Nguyễn Hùng Cường nhé ae! 😉"
+    "content": "Nguyễn Hùng Cường nhé ae!😉"
   },
   "acn_location": {
     "keywords": [
@@ -215,7 +191,7 @@
       "acn ăn gì",
       "đồ ăn acn thích"
     ],
-    "content": "ACN thích ăn gì thì chịu nhe, tại chưa hỏi😅"
+    "content": "Thích ăn đủ loại nhét được vào mồm"
   },
   "acn_favorite_color": {
     "keywords": [
@@ -235,7 +211,16 @@
       "birthday acn",
       "acn sinh nhật mấy"
     ],
-    "content": "ACN sinh nhật vào ngày 25 tháng 11 nhé ae! 🎉"
+    "content": "ACN sinh nhật vào ngày 25 tháng 11🎉"
+  },
+  "acn_weight": {
+    "keywords": [
+      "acn nặng bao nhiêu",
+      "cân nặng acn",
+      "acn bao nhiêu kg",
+      "weight acn"
+    ],
+    "content": "ACN nặng khoảng 36kg"
   },
   "kct_person": {
     "keywords": [
@@ -244,7 +229,7 @@
       "kct ai",
       "thằng kct"
     ],
-    "content": "Thằng KCT cút xuống mồ sống gòi nhen bà con cô bác anh chị em ơi! 🤣🙌"
+    "content": "Thằng KCT cút xuống mồ sống gòi nhen bà con cô bác anh chị em ơi!"
   },
   "bot_technology": {
     "keywords": [
@@ -254,7 +239,7 @@
       "bot làm bằng gì",
       "ai nào làm bot"
     ],
-    "content": "Bot này do Rowlec super chill sử dụng công nghệ Gemini 2.5 flash để phát triển nhé 🗿🗿."
+    "content": "Bot này do Rowlec super chill sử dụng modal gemma2 để phát triển nhé 🗿🗿."
   },
   "gpt_confusion": {
     "keywords": [
@@ -264,7 +249,7 @@
       "có phải gpt không",
       "bot gpt"
     ],
-    "content": "Chời ơi người ta sử dụng Gemini 2.5 flash chứ không phải GPT đâu mà anh em cứ thích GPT GPT ◑﹏◐!"
+    "content": "Model sử dụng cho bot là gemma2 nhen!"
   },
   "acn_enemies": {
     "keywords": [
@@ -313,7 +298,7 @@
       "bồ acn",
       "acn yêu ai"
     ],
-    "content": "Người yêu ACN là ai thì bot đ biết nhé (✿◡‿◡), câu hỏi này khó quá 📛"
+    "content": "Người yêu ACN là ai thì bot chịu nhe, câu hỏi này khó quá 📛"
   },
   "alexlocnguyen": {
     "keywords": [
@@ -373,7 +358,7 @@
       "uma acn",
       "agnes tachyon"
     ],
-    "content": "ACN có chơi Uma Musume nhé ae, đặc biệt nàng mẫu nương yêu thích của ổng là Agnes Tachyon đó! 🐴"
+    "content": "ACN có chơi Uma Musume nhé ae, nàng mẫu nương yêu thích của ổng là Agnes Tachyon"
   },
   "acn_fanpage": {
     "keywords": [
@@ -410,7 +395,7 @@
       "yuna ai",
       "con yuna"
     ],
-    "content": "Yuna là con chó được cờ lê nhưng hay trốn việc. (っ °Д °;)っ"
+    "content": "Yuna là con chó được cờ lê nhưng hay trốn việc."
   },
   "acn_team": {
     "keywords": [
@@ -418,9 +403,10 @@
       "đội acn",
       "hội ae acn",
       "nhóm acn",
-      "ae của acn"
+      "ae của acn",
+      "bạn bè của acn"
     ],
-    "content": "Hội ae của ACN bao gồm Tyberus, Rowlec, Milkey, Lộc, Giang, Alan và còn nhiều người khác nữa nhé 🤝"
+    "content": "AE của ACN bao gồm Tyberus, Rowlec, Milkey, Lộc, Giang, Alan và còn nhiều người khác nữa nhé"
   },
   "lmh_mystery": {
     "keywords": [
@@ -439,7 +425,7 @@
       "acn có bạn nào",
       "friend acn"
     ],
-    "content": "ACN có mối quan hệ rất tốt với nhiều YouTuber khác như hội nhóm Hypersquad hoặc là A Seng,.. và còn nhiều người khác nữa nhé 🙌"
+    "content": "ACN có mối quan hệ rất tốt với nhiều YouTuber nổi tiếng bạn có thể nghĩ ra được"
   },
   "acn_english": {
     "keywords": [
@@ -449,5 +435,92 @@
       "acn nói tiếng anh"
     ],
     "content": "ACN có kỹ năng tiếng Anh khá tốt, điển hình là ổng có quả bằng IELTS 7.5 (hết hạn cmnr)"
+  },
+  "donate": {
+    "keywords": [
+      "donate acn",
+      "ủng hộ acn",
+      "donate như thế nào"
+    ],
+    "content": "Có thể donate thông qua kênh YouTube của ACN hoặc trong các buổi livestream nhé ae! Mọi sự ủng hộ đều được trân trọng!"
+  },
+  "acn_short": {
+    "keywords": [
+      "acn shorts",
+      "video ngắn acn",
+      "acn tiktok",
+      "acn short"
+    ],
+    "content": "https://www.youtube.com/channel/UCTpRtw0_mv8vp4B3UcE6cuA"
+  },
+  "oc": {
+    "keywords": [
+      "acn oc",
+      "oc acn",
+      "original character acn",
+      "nhân vật gốc acn"
+    ],
+    "content": "OC của ACN là Kune nhé, huyền thoại nhiều thời"
+  },
+  "donate_to_dev": {
+    "keywords": [
+      "donate rowlec",
+      "ủng hộ rowlec",
+      "donate dev",
+      "ủng hộ dev"
+    ],
+    "content": "Ủng hộ dev của bot (Rowlec) thông qua stk: 103879245411  ngân hàng: VIETINBANK họ tên: LE NHUT ANH"
+  },
+  "favorite_character": {
+    "keywords": [
+      "nhân vật yêu thích acn",
+      "character acn thích",
+      "acn thích nhân vật nào",
+      "acn favorite character"
+    ],
+    "content": "ACN thích nhân vật Hatsune Miku nhất nhé ae! 💙"
+  },
+  "bot_source": {
+    "keywords": [
+      "bot nguồn ở đâu",
+      "bot source",
+      "bot code ở đâu",
+      "bot code"
+    ],
+    "content": "Source code của bot đang được giữ bí mật bởi Rowlec nhé, không được phép công khai."
+  },
+  "tyberus_who": {
+    "keywords": [
+      "tyberus là ai",
+      "ai là tyberus",
+      "tyberus ai"
+    ],
+    "content": "Tyberus là anh cả trong hội AE của ACN, người luôn hỗ trợ và giúp đỡ ACN trong mọi tình huống."
+  },
+  "anh_nhim_who": {
+    "keywords": [
+      "ánh nhím là ai",
+      "ai là anh nhím",
+      "anh nhím ai"
+    ],
+    "content": "Không có thông tin"
+  },
+  "valorant_acn": {
+    "keywords": [
+      "acn chơi valorant",
+      "valorant acn",
+      "acn đánh valorant",
+      "game valorant"
+    ],
+    "content": "ACN có chơi Valorant, dạo này ổng hay chơi con Neon"
+  },
+  "league_of_legends_acn": {
+    "keywords": [
+      "acn chơi lol",
+      "league of legends acn",
+      "acn đánh lol",
+      "game lol acn"
+    ],
+    "content": "ACN có chơi Liên Minh Huyền Thoại nhé ae, rank thách đấu luôn đó 🏆"
   }
 }

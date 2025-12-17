@@ -34,7 +34,7 @@ class YouTubeChatBot:
         self.user_cooldowns = {}  # Track user command cooldowns
         self.processed_message_ids = set()  # Track processed messages to avoid duplicates
         self.last_auto_message_time = time.time()  # Track last auto message
-        self.auto_message_interval = 300  # 5 minutes in seconds
+        self.auto_message_interval = 180  # 3 minutes in seconds
         
     def authenticate(self):
         """Authenticate with YouTube API"""
@@ -151,7 +151,7 @@ class YouTubeChatBot:
             logging.error(f"Timeout error: {e}")
     
     def send_periodic_messages(self):
-        """Send periodic promotional messages every 5 minutes"""
+        """Send periodic promotional messages every 3 minutes"""
         current_time = time.time()
         
         if current_time - self.last_auto_message_time >= self.auto_message_interval:
@@ -159,7 +159,8 @@ class YouTubeChatBot:
             messages = [
                 "Tham gia cộng đồng discord của ACN tại đây: discord.gg/acn 🎮💬",
                 "Mọi người có thể sử dụng lệnh !ask <Câu hỏi> để trò chuyện với bot nhé <3 🤖✨",
-                "Anh em nhớ làm theo lời khuyên của ACN: \"Hãy làm người thật tốt\" 🗿🗿💙"
+                "Anh em nhớ làm theo lời khuyên của ACN: \"Hãy làm người thật tốt\" 🗿🗿💙",
+                "Mọi người có thể ủng hộ người làm ra bot (Rowlec) tại đây: stk: 103879245411 ngân hàng: VIETINBANK họ tên: LE NHUT ANH, xin chân thành cảm ơn 🙏💖",
             ]
             
             message = random.choice(messages)
