@@ -301,25 +301,7 @@ Edit `config/bot_config.json` to customize settings:
 - `jokes` - Who can request jokes
 - `funny_sounds` - Sound effects (future)
 
-Val🧪 Testing
-
-Test từng module trước khi chạy bot chính:
-
-```bash
-# Test Ollama connection và response
-python test_ollama.py
-
-# Test Gemini API keys
-python test_gemini.py
-
-# Test RAG knowledge base matching
-python test_rag.py
-
-# Quick test tất cả
-python test_quick.py
-```
-
-## 🐛 Troubleshooting
+Val## 🐛 Troubleshooting
 
 ### Ollama Issues
 
