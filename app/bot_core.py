@@ -35,6 +35,10 @@ class YouTubeChatBot:
         self.processed_message_ids = set()  # Track processed messages to avoid duplicates
         self.last_auto_message_time = time.time()  # Track last auto message
         self.auto_message_interval = 180  # 3 minutes in seconds
+        # Pytchat fallback/retry controls
+        self.pytchat_retry_interval = int(self.config.get('pytchat_retry_sec', 90))
+        self.last_pytchat_retry = time.time()
+        self.pytchat_cookies = self.config.get('pytchat_cookies', '')
         
     def authenticate(self):
         """Authenticate with YouTube API"""
@@ -83,6 +87,29 @@ class YouTubeChatBot:
         except Exception as e:
             print(Fore.RED + f"Error getting live chat ID: {e}" + Fore.RESET)
             logging.error(f"Live chat ID error: {e}")
+            return None
+
+    def get_active_live_video_id(self, channel_id: str) -> Optional[str]:
+        """Try to detect the currently active live video for a given channel"""
+        try:
+            req = self.youtube.search().list(
+                part="id",
+                channelId=channel_id,
+                eventType="live",
+                type="video",
+                maxResults=1
+            )
+            resp = req.execute()
+            items = resp.get('items', [])
+            if items:
+                vid = items[0].get('id', {}).get('videoId')
+                if vid:
+                    logging.info(f"Detected active live video for channel {channel_id}: {vid}")
+                    return vid
+            logging.info(f"No active live video found for channel {channel_id}")
+            return None
+        except Exception as e:
+            logging.error(f"Active live video detection error: {e}")
             return None
     
     def send_message(self, message: str):
@@ -229,17 +256,100 @@ class YouTubeChatBot:
         startup_msg = self.config.get('messages', {}).get('startup', 'ĐANG ONLINE! 🤖')
         self.send_message(f"{bot_name} {startup_msg}")
         
-        # Create pytchat object
-        chat = pytchat.create(video_id=self.video_id)
+        # Try to open pytchat; prefer LiveChat (doc-style) first, then create() as backup.
+        chat = None
+        try:
+            chat = pytchat.LiveChat(video_id=self.video_id)
+            logging.info(f"Initialized pytchat LiveChat for video_id={self.video_id}")
+        except Exception as e_live:
+            logging.info(f"LiveChat init failed: {e_live}. Will try create() next.")
+            try:
+                # Prefer full chat (not TopChat) and pass cookies if configured
+                if self.pytchat_cookies:
+                    chat = pytchat.create(video_id=self.video_id, topchat_only=False, cookies=self.pytchat_cookies)
+                else:
+                    chat = pytchat.create(video_id=self.video_id, topchat_only=False)
+                logging.info(f"Initialized pytchat create() for video_id={self.video_id}")
+            except Exception as e_create:
+                logging.error(f"Failed to init pytchat (LiveChat & create) for video_id={self.video_id}: {e_create}")
+                print(Fore.YELLOW + "⚠ Không thể dùng pytchat cho video này. Sẽ chuyển sang đọc chat bằng YouTube Data API." + Fore.RESET)
         
         try:
-            while chat.is_alive():
-                # Send periodic messages
-                self.send_periodic_messages()
-                
-                for chat_item in chat.get().sync_items():
-                    self.process_message(chat_item)
-                time.sleep(0.1)
+            # If pytchat is alive, read from it; otherwise fall back to API.
+            if chat is not None and chat.is_alive():
+                while chat.is_alive():
+                    # Send periodic messages
+                    self.send_periodic_messages()
+                    data = chat.get()
+                    # Use sync_items if available (create()), otherwise items (LiveChat)
+                    try:
+                        items_fn = getattr(data, 'sync_items', None)
+                        items = items_fn() if callable(items_fn) else data.items
+                    except Exception:
+                        items = getattr(data, 'items', [])
+                    for chat_item in items:
+                        self.process_message(chat_item)
+                    time.sleep(0.1)
+
+            # Fallback: poll messages via YouTube Data API (also if pytchat died)
+            if chat is None or not chat.is_alive():
+                next_page_token = None
+                while True:
+                    self.send_periodic_messages()
+                    try:
+                        resp = self.youtube.liveChatMessages().list(
+                            liveChatId=self.live_chat_id,
+                            part="snippet,authorDetails",
+                            pageToken=next_page_token,
+                            maxResults=200
+                        ).execute()
+                        items = resp.get('items', [])
+                        next_page_token = resp.get('nextPageToken')
+                        for item in items:
+                            chat_item = self._convert_api_item(item)
+                            if chat_item:
+                                self.process_message(chat_item)
+                        # Use polling interval from API if available
+                        wait_ms = resp.get('pollingIntervalMillis', 2000)
+                        time.sleep(wait_ms / 1000.0)
+                        # Periodically retry switching back to pytchat
+                        if time.time() - self.last_pytchat_retry >= self.pytchat_retry_interval:
+                            self.last_pytchat_retry = time.time()
+                            try:
+                                # Try LiveChat first
+                                chat = None
+                                try:
+                                    chat = pytchat.LiveChat(video_id=self.video_id)
+                                    logging.info("Retry: LiveChat connected")
+                                except Exception as retry_live_err:
+                                    logging.info(f"Retry LiveChat failed: {retry_live_err}. Trying create().")
+                                    try:
+                                        if self.pytchat_cookies:
+                                            chat = pytchat.create(video_id=self.video_id, topchat_only=False, cookies=self.pytchat_cookies)
+                                        else:
+                                            chat = pytchat.create(video_id=self.video_id, topchat_only=False)
+                                        logging.info("Retry: create() connected")
+                                    except Exception as retry_create_err:
+                                        logging.info(f"Retry create() still failing: {retry_create_err}")
+                                if chat is not None:
+                                    print(Fore.GREEN + "✓ Đã chuyển lại sang pytchat (ít tốn quota hơn)." + Fore.RESET)
+                                    # Drain existing API loop then switch to pytchat loop
+                                    while chat.is_alive():
+                                        self.send_periodic_messages()
+                                        data = chat.get()
+                                        try:
+                                            items_fn = getattr(data, 'sync_items', None)
+                                            items = items_fn() if callable(items_fn) else data.items
+                                        except Exception:
+                                            items = getattr(data, 'items', [])
+                                        for chat_item in items:
+                                            self.process_message(chat_item)
+                                        time.sleep(0.1)
+                            except Exception as re_try_e:
+                                logging.info(f"Retry pytchat still failing: {re_try_e}")
+                    except Exception as api_e:
+                        logging.error(f"Data API chat poll error: {api_e}")
+                        time.sleep(2.0)
         except KeyboardInterrupt:
             print(Fore.YELLOW + "\nĐang dừng bot..." + Fore.RESET)
             shutdown_msg = self.config.get('messages', {}).get('shutdown', 'ĐÃ OFFLINE! 👋')
@@ -247,6 +357,36 @@ class YouTubeChatBot:
         except Exception as e:
             print(Fore.RED + f"Chat listener error: {e}" + Fore.RESET)
             logging.error(f"Chat listener error: {e}")
+
+    def _convert_api_item(self, item):
+        """Convert YouTube Data API liveChatMessages item to a pytchat-like object"""
+        try:
+            author = item.get('authorDetails', {})
+            snippet = item.get('snippet', {})
+            class Author:
+                def __init__(self, d):
+                    self.channelId = d.get('channelId', '')
+                    self.name = d.get('displayName', '')
+                    self.isChatOwner = bool(d.get('isChatOwner', False))
+                    self.isChatModerator = bool(d.get('isChatModerator', False))
+                    self.isChatSponsor = bool(d.get('isChatSponsor', False))
+            class ChatItem:
+                def __init__(self, a, s):
+                    self.author = a
+                    self.message = s.get('displayMessage', '')
+                    # Use publishedAt as timestamp, fallback to current time
+                    pub = s.get('publishedAt')
+                    self.timestamp = pub if pub else str(time.time())
+                    # Human-readable datetime
+                    try:
+                        dt = datetime.fromisoformat(pub.replace('Z', '+00:00')) if pub else datetime.now()
+                    except Exception:
+                        dt = datetime.now()
+                    self.datetime = dt.strftime('%Y-%m-%d %H:%M:%S')
+            return ChatItem(Author(author), snippet)
+        except Exception as e:
+            logging.error(f"Convert API item error: {e}")
+            return None
 
 def start_bot():
     """Initialize and start the bot"""

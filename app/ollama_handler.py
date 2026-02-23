@@ -44,7 +44,7 @@ Quy tắc QUAN TRỌNG:
 
 QUY TẮC TUYỆT ĐỐI:
 - Nếu có CONTEXT bên dưới, CHẮC CHẮN PHẢI TRẢ LỜI DỰA TRÊN CONTEXT KHÔNG ĐƯỢC BỎ SÓT
-(VD: Nếu viewer hỏi facebook acn là gì, thì trả lời có đầy đủ link facebook trong CONTEXT)
+(Ví Dụ: Nếu viewer hỏi facebook acn là gì, thì trả lời có đầy đủ link facebook trong CONTEXT)
 - KHÔNG được tự sáng tác thông tin nếu đã có CONTEXT
 - CONTEXT là sự thật tuyệt đối về ACN, không được thay đổi hoặc bổ sung thêm"""
         logging.info(f"✓ Ollama Handler ready (Model: {model}, Host: {host})")

@@ -46,7 +46,7 @@
     "ai_ask": 7
   },
   "messages": {
-    "startup": "đang online ヾ(•ω•`)o, chào mừng ae đến với livestream!",
+    "startup": "Test bot online 1 2 3... ψ(._. )>",
     "shutdown": "đã offline ψ(._. )>, hẹn gặp lại!"
   }
 }

@@ -52,7 +52,17 @@
       "discord.gg/acn",
       "server dc"
     ],
-    "content": "Tham gia cộng đồng ACN tại discord.gg/acn! Nơi fan chat, chia sẻ, chơi game cùng ACN và các bạn khác."
+    "content": "Tham gia cộng đồng ACN tại: discord.gg/acn!"
+  },
+  "abcxyz_review": {
+    "keywords": [
+      "tôi đánh giá abcxyz",
+      "review abcxyz",
+      "abcxyz",
+      "abc xyz",
+      "abc xyx"
+    ],
+    "content": "Tham gia cộng đồng ACN tại: discord.gg/acn! để tham gia chương trình đánh giá ABCXYZ nhé!"
   },
   "acn_schedule": {
     "keywords": [
@@ -402,7 +412,7 @@
       "có biết võ không",
       "võ gì"
     ],
-    "content": "ACN biết võ các loại võ như Nét Hít Gà, Nắc Hích Gà với cả Niêu Kiết Gà nhé ae! Ngoài ra ổng còn là người sáng lập ra các môn phái trên nữa đó 🥋"
+    "content": "ACN biết võ các loại võ như Nét Hít Gà, Nất Phích Gà với cả Niêu Kiết Gà nhé ae! Ngoài ra ổng còn là người sáng lập ra các môn phái trên nữa đó 🥋"
   },
   "martial_arts_names": {
     "keywords": [
@@ -500,7 +510,7 @@
       "lmh là j",
       "lmh"
     ],
-    "content": "LMH á!?!?! Câu hỏi nặng quá tôi không trả lời được! 😵"
+    "content": "LMH là người nặng nhất có thể tồn tại bot không có khả năng trả lời"
   },
   "acn_friends": {
     "keywords": [
@@ -534,7 +544,7 @@
       "donate ở đâu",
       "ủng hộ qua đâu"
     ],
-    "content": "Có thể donate thông qua kênh YouTube của ACN hoặc trong các buổi livestream nhé ae! Mọi sự ủng hộ đều được trân trọng!"
+    "content": "Link donate đây: ​​https://zypage.com/acn hoặc quét mã QR trong livestream"
   },
   "acn_short": {
     "keywords": [
@@ -570,7 +580,7 @@
       "stk",
       "vietinbank"
     ],
-    "content": "Ủng hộ dev của bot (Rowlec) thông qua stk: 103879245411  ngân hàng: VIETINBANK họ tên: LE NHUT ANH"
+    "content": "STK: 103879245411  ngân hàng: VIETINBANK họ tên: LÊ NHỰT ANH"
   },
   "favorite_character": {
     "keywords": [
@@ -639,7 +649,10 @@
       "lol",
       "rank",
       "elo",
-      "bậc rank"
+      "rank liên minh huyền thoại acn",
+      "acn rank lmht",
+      "rank liên minh huyền thoại",
+      "rank lol"
     ],
     "content": "ACN có chơi Liên Minh Huyền Thoại nhé ae, rank thách đấu luôn đó 🏆"
   }
